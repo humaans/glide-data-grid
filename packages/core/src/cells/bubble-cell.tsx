@@ -24,7 +24,7 @@ export const bubbleCellRenderer: InternalCellRenderer<BubbleCell> = {
 
 const itemMargin = 4;
 
-function drawBubbles(args: BaseDrawArgs, data: readonly string[]) {
+export function drawBubbles(args: BaseDrawArgs, data: readonly string[]) {
     const { rect, theme, ctx, highlighted } = args;
     const { x, y, width: w, height: h } = rect;
     const bubbleHeight = 20;

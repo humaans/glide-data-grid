@@ -26,6 +26,7 @@ export type {
     PositionableMouseEventArgs,
     PreventableEvent,
 } from "./internal/data-grid/event-args.js";
+export { outOfBoundsKind } from "./internal/data-grid/event-args.js";
 export { ImageOverlayEditor } from "./internal/data-grid-overlay-editor/private/image-overlay-editor.js";
 export { default as MarkdownDiv } from "./internal/markdown-div/markdown-div.js";
 export { GrowingEntry as TextCellEntry } from "./internal/growing-entry/growing-entry.js";
@@ -58,7 +59,7 @@ export { drilldownCellRenderer } from "./cells/drilldown-cell.js";
 export { loadingCellRenderer } from "./cells/loading-cell.js";
 export { newRowCellRenderer } from "./cells/new-row-cell.js";
 export { markerCellRenderer } from "./cells/marker-cell.js";
-export { bubbleCellRenderer } from "./cells/bubble-cell.js";
+export { bubbleCellRenderer, drawBubbles } from "./cells/bubble-cell.js";
 export { protectedCellRenderer } from "./cells/protected-cell.js";
 export { rowIDCellRenderer } from "./cells/row-id-cell.js";
 export { AllCellRenderers } from "./cells/index.js";
