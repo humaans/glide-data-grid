@@ -5,6 +5,8 @@
         "start": "npm run storybook",
         "version": "./update-version.sh",
         "build": "npm run build --workspaces && npm run lint --workspaces",
+        "lint": "npm run lint --workspaces",
+        "watch": "cd packages/core && npm run watch --",
         "typedoc": "typedoc --readme none --disableSources --tsconfig packages/core/tsconfig.json",
         "serve-docs": "http-server packages/core/gen-docs",
         "storybook": "storybook dev -p 9009 --no-open",
