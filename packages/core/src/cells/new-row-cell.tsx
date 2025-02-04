@@ -13,11 +13,12 @@ export const newRowCellRenderer: InternalCellRenderer<NewRowCell> = {
 };
 
 function drawNewRowCell(args: BaseDrawArgs, data: string, icon?: string) {
+    // Code in this fn has been changed by Humaans for better rendering of the new row for our use case
     const { ctx, rect, hoverAmount, theme, spriteManager } = args;
     const { x, y, width: w, height: h } = rect;
     ctx.beginPath();
     ctx.globalAlpha = hoverAmount;
-    ctx.rect(x + 1, y + 1, w, h - 2);
+    ctx.rect(x, y, w, h);
     ctx.fillStyle = theme.bgHeaderHovered;
     ctx.fill();
     ctx.globalAlpha = 1;
@@ -29,12 +30,13 @@ function drawNewRowCell(args: BaseDrawArgs, data: string, icon?: string) {
 
     if (icon !== undefined) {
         const padding = 8;
-        const size = h - padding;
-        const px = x + padding / 2;
-        const py = y + padding / 2;
+        const size = 20;
+        const xOffset = 1;
+        const px = x + padding + xOffset;
+        const py = y + padding - 1;
 
         spriteManager.drawSprite(icon, "normal", ctx, px, py, size, theme, alwaysShowIcon ? 1 : hoverAmount);
-        textX = size;
+        textX = size + padding + xOffset;
     } else {
         textX = 24;
         const finalLineSize = 12;
@@ -54,7 +56,9 @@ function drawNewRowCell(args: BaseDrawArgs, data: string, icon?: string) {
         }
     }
 
+    const font = `12px ${theme.fontFamily}`;
+    ctx.font = font;
     ctx.fillStyle = theme.textMedium;
-    ctx.fillText(data, textX + x + theme.cellHorizontalPadding + 0.5, y + h / 2 + getMiddleCenterBias(ctx, theme));
+    ctx.fillText(data, textX + x + theme.cellHorizontalPadding + 0.5, y + h / 2 + getMiddleCenterBias(ctx, font));
     ctx.beginPath();
 }
